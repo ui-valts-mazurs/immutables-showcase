@@ -21,7 +21,7 @@ class DtoUseCaseTest {
 
     @Test
     void serializesToJson() throws JsonProcessingException {
-        DtoUseCase instance = ImmutableDtoUseCase.of(NAME);
+        DtoUseCase instance = new ImmutableDtoUseCase(NAME);
 
         String json = WRITER.writeValueAsString(instance);
 

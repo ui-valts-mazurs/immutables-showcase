@@ -23,7 +23,7 @@ import org.immutables.value.Generated;
  * Use the builder to create immutable instances:
  * {@code ImmutableDtoUseCase.builder()}.
  * Use the static factory method to create immutable instances:
- * {@code ImmutableDtoUseCase.of()}.
+ * {@code new ImmutableDtoUseCase()}.
  */
 @Generated(from = "DtoUseCase", generator = "Immutables")
 @SuppressWarnings({"all"})
@@ -34,7 +34,11 @@ import org.immutables.value.Generated;
 public final class ImmutableDtoUseCase implements DtoUseCase {
   private final String name;
 
-  private ImmutableDtoUseCase(String name) {
+  /**
+   * Construct a new immutable {@code DtoUseCase} instance.
+   * @param name The value for the {@code name} attribute
+   */
+  public ImmutableDtoUseCase(@DtoUseCase.CustomAnnotation String name) {
     this.name = Objects.requireNonNull(name, "name");
   }
 
@@ -46,6 +50,7 @@ public final class ImmutableDtoUseCase implements DtoUseCase {
    * @return The value of the {@code name} attribute
    */
   @JsonProperty("custom_name")
+  @DtoUseCase.CustomAnnotation
   @Override
   public String name() {
     return name;
@@ -113,6 +118,7 @@ public final class ImmutableDtoUseCase implements DtoUseCase {
   static final class Json implements DtoUseCase {
     @Nullable String name;
     @JsonProperty("custom_name")
+    @DtoUseCase.CustomAnnotation
     public void setName(String name) {
       this.name = name;
     }
@@ -133,15 +139,6 @@ public final class ImmutableDtoUseCase implements DtoUseCase {
       builder.name(json.name);
     }
     return builder.build();
-  }
-
-  /**
-   * Construct a new immutable {@code DtoUseCase} instance.
-   * @param name The value for the {@code name} attribute
-   * @return An immutable DtoUseCase instance
-   */
-  public static ImmutableDtoUseCase of(String name) {
-    return new ImmutableDtoUseCase(name);
   }
 
   /**
